@@ -109,11 +109,7 @@ See also `s-split'."
 
 (defun s-repeat (num s)
   "Make a string of S repeated NUM times."
-  (let (ss)
-    (while (> num 0)
-      (setq ss (cons s ss))
-      (setq num (1- num)))
-    (apply 'concat ss)))
+  (s-join "" (make-vector num s)))
 
 (defun s-chop-suffix (suffix s)
   "Remove SUFFIX if it is at end of S."
