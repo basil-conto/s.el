@@ -414,15 +414,16 @@ Each element itself is a list of matches, as per
 `match-string'. Multiple matches at the same position will be
 ignored after the first."
   (save-match-data
-    (let ((all-strings ())
-          (i 0))
-      (while (and (< i (length string))
+    (let (all-strings
+          (len (length string))
+          (i   0))
+      (while (and (< i len)
                   (string-match regex string i))
         (setq i (1+ (match-beginning 0)))
         (let (strings
               (num-matches (/ (length (match-data)) 2))
               (match 0))
-          (while (/= match num-matches)
+          (while (< match num-matches)
             (push (match-string match string) strings)
             (setq match (1+ match)))
           (push (nreverse strings) all-strings)))
