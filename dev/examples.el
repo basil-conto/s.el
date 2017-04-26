@@ -104,7 +104,8 @@
     (s-concat (s-repeat 8 "Na") " Batman!") => "NaNaNaNaNaNaNaNa Batman!")
 
   (defexamples s-concat
-    (s-concat "abc" "def" "ghi") => "abcdefghi")
+    (s-concat "abc" "def" "ghi") => "abcdefghi"
+    (s-concat "foo" '(98 97 114) [98 97 122]) => "foobarbaz")
 
   (defexamples s-prepend
     (s-prepend "abc" "def") => "abcdef")

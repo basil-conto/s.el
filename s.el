@@ -95,9 +95,14 @@ See also `s-split'."
   "Join all the strings in STRINGS with SEPARATOR in between."
   (mapconcat 'identity strings separator))
 
-(defun s-concat (&rest strings)
-  "Join all the string arguments into one string."
-  (apply 'concat strings))
+(defun s-concat (&rest sequences)
+  "Join all SEQUENCES into one string.
+
+Alias: `s-to-string'. This is a simple wrapper around the
+built-in `concat'."
+  (apply #'concat sequences))
+
+(defalias 's-to-string 's-concat)
 
 (defun s-prepend (prefix s)
   "Concatenate PREFIX and S."
