@@ -91,7 +91,7 @@ See also `s-split'."
 
 (defun s-join (separator strings)
   "Join all the strings in STRINGS with SEPARATOR in between."
-  (mapconcat 'identity strings separator))
+  (mapconcat #'identity strings separator))
 
 (defun s-concat (&rest strings)
   "Join all the string arguments into one string."
@@ -558,11 +558,11 @@ transformation."
                          ((eq replacer 'gethash)
                           (funcall replacer var extra))
                          ((eq replacer 'aget)
-                          (funcall 's--aget extra var))
+                          (s--aget extra var))
                          ((eq replacer 'elt)
                           (funcall replacer extra var))
                          ((eq replacer 'oref)
-                          (funcall #'slot-value extra (intern var)))
+                          (slot-value extra (intern var)))
                          (t
                           (set-match-data saved-match-data)
                           (if extra
